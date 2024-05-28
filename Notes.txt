@@ -1,0 +1,41 @@
+- compile ts file using, tsc <file_name>.ts (two options, give js file name after .ts or no name, then same file name in js would be created)
+- variable type is defined after decleration first time (infers its type)
+- only number type, covers all (int, float)
+- Arrow function format 1
+        const FUNCNAME = (VARIABLES) => {
+            CODE
+            return VALUE
+        }
+- Define types using ":", like age: number
+- Arrays are also type specific, to have mixed types declare it at while writing the array in it
+- Objects also work in the same way that the key value pairs have the same type (value), overwriting only allows when the exact structure and type of the original one and cant also add newer ones. VERY STRICT
+- to get all values in loop, use array.forEach(FUNCTION). To push newer values use array.push()
+- Initialize types (explicit types), do using 
+        let character: string;
+- To push to an empty array, initialize it by giving it an empty array value like
+        let newArray: string[] = []; ||| let newArray: string[]
+        1st one would be able to push, 2nd wont
+- Union types: 
+        let mixed: (string|number)[];
+- Multiple acceptable types: 
+        let uid: string|number;
+- Object type also allows for arrays as a entry, as array is also a type of Object.
+        let userInfo: object;
+        userInfo = {
+            name: "vaibhav",
+            age: 21
+        }
+
+        let userInfo2 = {
+            name: string,
+            age: number,
+            class: string
+        }
+        // check the : here after userInfo2
+        userInfo2: {
+            name: "vaibhav",
+            age: 21,
+            class: "pass out
+        }
+
+- 
