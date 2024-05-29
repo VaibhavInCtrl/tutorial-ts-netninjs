@@ -78,4 +78,71 @@
         other way, found in comments
         type calc = (a:number, b:number, c:string) => number;
 - Variable in strings using `${user.name} says ${user.greeting}`
-- 
+- To verify for ts that element has a non null value put ! mark in front of DOM values like:
+        const anchor = document.querySelector('a');
+        and if we do
+        console.log(anchor.href)
+        we would get error of that this value might be null
+        to remove this put ! at end
+        const anchor = document.querySelector('a')!;
+- This is how an eventListener is added:
+        form.addEventListener("submit",(e:Event) => {
+                e.preventDefault()
+                console.log(
+                        type.value,
+                        tofrom.value,
+                        details.value,
+                        amount.valueAsNumber
+                )
+                })
+- Classes: Used to create specific objects that are reused and have some functions attached with them as well
+        class MyInvoice {
+                client: string;
+                payment: number;
+                details: string;
+                constructor (c: string, p: number, d: string){
+                        this.client = c;
+                        this.payment = p;
+                        this.details = d;
+                }
+                format():void {
+                        console.log(`${this.client} owes us ${this.payment} amount for ${this.details}`)
+                }
+        }
+
+- Access Modifiers, used to define the class values which are added in the class, public, private, readonly. if we want to put the arguments of the class inside the constructor we need to define their types like private, public or readonly. like:
+        class MyInvoice {
+                constructor (readonly client: string,
+                        private payment: number,
+                        public details: string){
+                }
+                format():void {
+                        console.log(`${this.client} owes us ${this.payment} amount for ${this.details}`)
+                }
+        }
+- Better to craete different files for different works like DOM interactions, database interactions, auth interactions, use es6
+- To use different folders and stuff change in tsconfig.json file as follows:
+        "target": "ES6", 
+        "module": "ES2015", 
+        only modern browsers supported. 
+        change index.html script tag and add type="module"
+- Doesnt bundle our code, makes multiple calls, we can use webpacks to combat both these
+- Interfaces: Enforce a certain structure to a class, objects. Specify functions, arguments. Can be implemented like this:
+        interface MyPerson {
+                name: string;
+                age: number;
+                speak(word: string): void;
+                spend(amount: number): number;
+        }
+
+        const me:MyPerson = {
+                name: "vaibhav",
+                age: 21,
+                speak(word: string): void {
+                        console.log(word)
+                },
+                spend(amount: number): number {
+                        console.log(amount);
+                        return amount;
+                },
+        }
