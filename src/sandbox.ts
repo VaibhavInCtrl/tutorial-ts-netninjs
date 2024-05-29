@@ -55,3 +55,24 @@ userInfo3 = {
     class: "pass out"
 }
 
+console.log("new ts done")
+
+type StringorNum = string | number;
+type objwithName = {name: string, uid: StringorNum};
+const greet = (user: objwithName):void => {
+    console.log(user)
+}
+greet({name: "vaibhav", uid: "123"})
+
+let calcVariable: (a: number, b: number, c?:string) => number;
+
+calcVariable = (num1: number, num2: number, c:string = "add") => {
+    if (c === "add"){
+        return num1 + num2
+    }else{
+        return num1 - num2
+    }
+}
+
+console.log(calcVariable(2,3, "substract"))
+

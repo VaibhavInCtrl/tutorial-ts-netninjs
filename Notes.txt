@@ -38,4 +38,44 @@
             class: "pass out
         }
 
+- We have :any type which can give object, string, boolean, number. works like other types in defining
+- Public and src folders. Public have the final codes (js file), src has the source code(ts file). To manage ts in this format, we do 
+        tsc --init
+        change the rootDir to correct dir like ./src and outDir to ./Public
+        then run tsc -w for any new file and everything else
+- Now if new file added in the base dir, will also be compiled to remove this add 
+        "include": ["src"]
+        as a new key in the mail object in tsconfig.json
+- To define a const or let variable to be a function use 
+        const newFun: Function;
+        capital F
+- To have optional parameters, use ? in front of them
+        const add = (a: number, b: number, c?: number | string) => {
+                console.log(a+b);
+                console.log(c)
+        }
+        other method:
+        const add = (a: number, b: number, c: number | string = 10) => {
+                console.log(a+b);
+                console.log(c)
+        }
+        c in above has a default value of 10, its still optional but now no ? required
+- To define return type of a function use like this:
+        const minus = (a: number, b: number): number => {
+                return a - b
+        }
+        let result = minus(10, 7)
+        can also use type :void
+- To define own types use:
+        type StringorNum = string | number;
+        type objwithName = {name: string, uid: StringorNum};
+        to use this in code
+        const greet = (user: objwithName) => {
+                return user
+        }
+- Function Signature: general parameters of the function like arguments and what it returns like:
+        let calcFunctionSignature: (a:number, b:number, c:string) => number;
+        other way, found in comments
+        type calc = (a:number, b:number, c:string) => number;
+- Variable in strings using `${user.name} says ${user.greeting}`
 - 
