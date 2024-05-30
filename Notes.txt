@@ -146,3 +146,73 @@
                         return amount;
                 },
         }
+- Interfaces alongwith classes:
+        use them like this:
+        export class MyInvoice implements hasFormatter{CLASS CODE}
+- Rendering an HTML template, to render the list of objects added in the invoices case, we can create a template for the list, in the constructor define all the elements that are present in the index.html file
+        export class MylistTemplate {
+                constructor(private container: HTMLUListElement){}
+
+                render(doc: hasFormatter, heading: string, pos?: 'start' | 'end') {
+                        let li = document.createElement('li');
+                        let h4 = document.createElement('h4');
+                        let p = document.createElement('p');
+                        h4.innerText = heading;
+                        p.innerText = doc.format();
+                        li.append(h4)
+                        li.append(p)
+                        
+                        if (pos === "start") {
+                        this.container.prepend(li);
+                        }
+                        else{
+                        this.container.append(li);
+                        }
+                }
+        }
+- Generics allow us to create reusalbe block of codes that can be used with different types.
+        const addUID = <T extends {name: string}>(obj: T) => {
+                const uid = Math.floor(Math.random() * 100);
+                return {...obj, uid};
+        }
+        const newerObj = addUID(newObj);
+        if we try to access newerObj older values, error happens
+        to combat this we can add <T> and pass obj as T, what this does is, whatever older info and type was passed is now retained
+        now we can also add uid to strings, to combat this we can extend T to objects, like <T extends object>
+        we can use {name: string} instead of objects to even define it more other than just objects, but this only checks for 
+        name key, there might be other keys in the object and theri wont be any issue
+- Interfaces with generics
+        interface myresource<T> {
+                uid: number,
+                reference: string,
+                data: T
+        }
+        const intGenericObj: myresource<string[]> = {
+                uid: 23,
+                reference: "asd",
+                data: ["asdd"]
+        }
+- Enums, stores string values to a specific index number that can be used to easily write code and use further:
+        enum MyResourceType {COAL, COKE, SINTER, KILN}
+
+        interface resourceobj<T> {
+                uid: number,
+                rstype: MyResourceType,
+                data: T
+        }
+        let rsdoc1:resourceobj<String> = {
+                uid: 12,
+                rstype: MyResourceType.COAL,
+                data:"hello"
+        }
+- ... is the spread operator
+- Tuples: 
+        const newArr = ["abc", 23, true]
+        newArr[0] = 22
+        allowed, but we dont want to 
+        const newArr2:[string, number, boolean] = ["abc", 23, true]
+        type tupleType = [string, number, boolean];
+        let newTupleArr: tupleType[] = [];
+        newTupleArr.push(newArr2);
+        different from arrays such that we can fix the position of the type of the value that are entered in 
+        the tuple and it cannot be anything else other than that type

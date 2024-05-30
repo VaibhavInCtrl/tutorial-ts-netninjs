@@ -1,4 +1,6 @@
-export class MyInvoice {
+import { hasFormatter } from "../interfaces/HasFormatter"
+
+export class MyInvoice implements hasFormatter{
     
     constructor (
         readonly client: string,
@@ -6,6 +8,6 @@ export class MyInvoice {
         private details: string){
     }
     format(): string {
-        return (`${this.client} owes us ${this.payment} amount for ${this.details}`)
+        return (`${this.client} has to give us ${this.payment} amount for ${this.details}`)
     }
 }
